@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 26, 2025 at 06:26 AM
+-- Generation Time: Oct 03, 2025 at 06:32 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -45,7 +45,8 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (2, 'วิภา', 'สุขสันต์', '0898765432', 'wipa', 'wipa2025'),
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'มานะ', 'เด็กดี', '038756921', 'mana', '1234'),
-(5, 'มานี', 'ใจดี', '038756901', 'manee', '1234');
+(5, 'มานี', 'ใจดี', '038756901', 'manee', '1234'),
+(8, 'จอน', 'นี่', '0879456123', 'john', '$2y$10$UNj9j7EapYA37');
 
 -- --------------------------------------------------------
 
@@ -111,11 +112,9 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`product_id`, `product_name`, `description`, `price`, `image`, `stock`, `created_at`) VALUES
-(1, 'เสื้อยืดคอกลม', 'เสื้อยืดผ้าฝ้าย 100% สวมใส่สบาย', '199.00', 'tshirt.jpg', 50, '2025-09-19 02:16:53'),
-(2, 'กางเกงยีนส์', 'กางเกงยีนส์ทรงกระบอก สีฟ้าอ่อน', '799.00', 'jeans.jpg', 30, '2025-09-19 02:16:53'),
-(3, 'รองเท้าผ้าใบ', 'รองเท้าผ้าใบสีขาว ใส่ได้ทุกโอกาส', '1299.00', 'sneakers.jpg', 20, '2025-09-19 02:16:53'),
-(4, 'ggg', 'dsggd', '100.00', '1758254466_b6bdfb51e3eb7c917fa6c192dda4b76a.png', 2, '2025-09-19 04:01:06'),
-(5, 'spu', 'spu100', '200.00', '1758255235_images.jpg', 100, '2025-09-19 04:13:55');
+(6, 'เสื้อยืด', 'เบา', '399.00', '1759459257_8x.jpg', 3, '2025-10-03 02:40:57'),
+(7, 'เสื้อ', 'นุ่ม', '399.00', '1759459486_1758255235_images.jpg', 5, '2025-10-03 02:44:46'),
+(8, 'กางเกงมวย', 'เบา สบาย', '599.00', '1759459998_KNS-121-Red-800x600.jpg', 3, '2025-10-03 02:53:18');
 
 -- --------------------------------------------------------
 
@@ -189,7 +188,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
@@ -213,7 +212,7 @@ ALTER TABLE `payments`
 -- AUTO_INCREMENT for table `products`
 --
 ALTER TABLE `products`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `students`

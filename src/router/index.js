@@ -9,6 +9,9 @@ import Product from "../views/Product.vue";
 import Add_product from "../views/Add_product.vue";
 import Student from "../views/Student.vue";
 import Add_student from "../views/Add_student.vue";
+import edit_customer from "../views/edit_customer.vue";
+import edit_product from "../views/edit_product.vue";
+import edit_student from "../views/edit_student.vue";
 
 
 const routes = [
@@ -21,6 +24,9 @@ const routes = [
   { path: "/add_product", name: "add_product", component: Add_product},
   { path: "/student", name: "student", component: Student},
   { path: "/add_student", name: "add_student", component: Add_student},
+  { path: "/edit_customer", name: "edit_customer", component: edit_customer},
+  { path: "/edit_product", name: "edit_product", component: edit_product},
+  { path: "/edit_student", name: "edit_student", component: edit_student},
  
 ]
 
