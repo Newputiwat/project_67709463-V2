@@ -54,6 +54,16 @@
               <li><a class="dropdown-item" href="/edit_student">edit_student</a></li>
             </ul>
           </li>
+          <li class="nav-item dropdown" @click="toggleDropdown('employee')">
+            <a class="nav-link dropdown-toggle" href="#" role="button" aria-expanded="false">
+              Employee
+            </a>
+            <ul class="dropdown-menu" :class="{'show': dropdowns.employee}">
+              <li><a class="dropdown-item" href="/employee">employee</a></li>
+              <li><a class="dropdown-item" href="/edit_employee">edit_employee</a></li>
+               <li><a class="dropdown-item" href="/add_employee">employee</a></li>
+            </ul>
+          </li>
           
           <li class="nav-item">
             <a class="nav-link" href="/about">About</a>

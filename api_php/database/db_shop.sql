@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 03, 2025 at 06:32 AM
+-- Generation Time: Oct 17, 2025 at 07:11 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -46,7 +46,55 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'มานะ', 'เด็กดี', '038756921', 'mana', '1234'),
 (5, 'มานี', 'ใจดี', '038756901', 'manee', '1234'),
-(8, 'จอน', 'นี่', '0879456123', 'john', '$2y$10$UNj9j7EapYA37');
+(8, 'จอน', 'นี', '0879456123', 'john', '$2y$10$UNj9j7EapYA37');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employee`
+--
+
+CREATE TABLE `employee` (
+  `employee_id` int(11) NOT NULL,
+  `first_name` varchar(100) NOT NULL,
+  `last_name` varchar(100) NOT NULL,
+  `username` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `รูปภาพ` blob DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employee`
+--
+
+INSERT INTO `employee` (`employee_id`, `first_name`, `last_name`, `username`, `password`, `รูปภาพ`) VALUES
+(1, 'สมชาย', 'ใจดี', 'somchai', 'password123', NULL),
+(2, 'สมศรี', 'สุขใจ', 'somsee', 'password456', NULL),
+(3, 'นพรัตน์', 'มุ่งมั่น', 'nopparat', 'password789', NULL),
+(4, 'ภัทราพร', 'คงมั่น', 'patraporn', 'password101', NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `employees`
+--
+
+CREATE TABLE `employees` (
+  `employee_id` int(11) NOT NULL,
+  `employee_name` varchar(100) NOT NULL,
+  `department` varchar(50) NOT NULL,
+  `position` varchar(50) NOT NULL,
+  `salary` decimal(10,2) NOT NULL,
+  `image` varchar(255) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `employees`
+--
+
+INSERT INTO `employees` (`employee_id`, `employee_name`, `department`, `position`, `salary`, `image`, `created_at`) VALUES
+(1, 'กดรนหก่ดสาหก่', 'ิอดิกด', 'เหกเกเ', '99999999.99', '68f1cf2ab9c82_1760677674.jpg', '2025-10-17 05:07:54');
 
 -- --------------------------------------------------------
 
@@ -151,6 +199,19 @@ ALTER TABLE `customers`
   ADD PRIMARY KEY (`customer_id`);
 
 --
+-- Indexes for table `employee`
+--
+ALTER TABLE `employee`
+  ADD PRIMARY KEY (`employee_id`),
+  ADD UNIQUE KEY `username` (`username`);
+
+--
+-- Indexes for table `employees`
+--
+ALTER TABLE `employees`
+  ADD PRIMARY KEY (`employee_id`);
+
+--
 -- Indexes for table `orderdetails`
 --
 ALTER TABLE `orderdetails`
@@ -189,6 +250,18 @@ ALTER TABLE `students`
 --
 ALTER TABLE `customers`
   MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `employee`
+--
+ALTER TABLE `employee`
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `employees`
+--
+ALTER TABLE `employees`
+  MODIFY `employee_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `orderdetails`
