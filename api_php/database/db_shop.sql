@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 17, 2025 at 07:11 AM
+-- Generation Time: Oct 31, 2025 at 10:08 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 8.1.12
 
@@ -33,7 +33,7 @@ CREATE TABLE `customers` (
   `lastName` varchar(50) NOT NULL,
   `phone` varchar(15) NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL
+  `password` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -46,7 +46,8 @@ INSERT INTO `customers` (`customer_id`, `firstName`, `lastName`, `phone`, `usern
 (3, 'John', 'Doe', '0991122334', 'johnd', 'securepwd'),
 (4, 'มานะ', 'เด็กดี', '038756921', 'mana', '1234'),
 (5, 'มานี', 'ใจดี', '038756901', 'manee', '1234'),
-(8, 'จอน', 'นี', '0879456123', 'john', '$2y$10$UNj9j7EapYA37');
+(8, 'จอน', 'นี', '0879456123', 'john', '$2y$10$UNj9j7EapYA37'),
+(9, 'dawd', 'dawda', 'dawda', 'kk', '$2y$10$bD2cvP05Q.784uHu0AdQduwjyiWnL49Cue8.Q0WTlJu7gQnq9okrm');
 
 -- --------------------------------------------------------
 
@@ -249,7 +250,7 @@ ALTER TABLE `students`
 -- AUTO_INCREMENT for table `customers`
 --
 ALTER TABLE `customers`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `employee`

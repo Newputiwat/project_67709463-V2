@@ -1,47 +1,101 @@
-import { createRouter, createWebHistory } from "vue-router";
-
-import ShowProduct from "../views/ShowProduct.vue";
-import About from "../views/AboutView.vue";
-import HomeView from "../views/HomeView.vue";
-import Customer from "../views/Customer.vue";
-import Add_customer from "../views/Add_customer.vue";
-import Product from "../views/Product.vue";
-import Add_product from "../views/Add_product.vue";
-import Student from "../views/Student.vue";
-import Add_student from "../views/Add_student.vue";
-import edit_customer from "../views/edit_customer.vue";
-import edit_product from "../views/edit_product.vue";
-import edit_student from "../views/edit_student.vue";
-import employee from "../views/Employee.vue";
-import edit_employee from "../views/Edit_Employee.vue";
-import add_employee from "../views/Add_Employee.vue";
-
-
-
+import { createRouter, createWebHistory } from 'vue-router'
+import HomeView from '../views/HomeView.vue'
 
 const routes = [
-  { path: "/", name: "Home", component: HomeView },
-  { path: "/showproduct", name: "ShowProduct", component: ShowProduct },
-  { path: "/about", name: "about", component: About},
-  { path: "/customer", name: "customer", component: Customer},
-  { path: "/add_customer", name: "add_customer", component: Add_customer},
-  { path: "/product", name: "product", component: Product},
-  { path: "/add_product", name: "add_product", component: Add_product},
-  { path: "/student", name: "student", component: Student},
-  { path: "/add_student", name: "add_student", component: Add_student},
-  { path: "/edit_customer", name: "edit_customer", component: edit_customer},
-  { path: "/edit_product", name: "edit_product", component: edit_product},
-  { path: "/edit_student", name: "edit_student", component: edit_student},
-  { path: "/employee", name: "employee", component: employee},
-  { path: "/edit_employee", name: "edit_employee", component: edit_employee},
-  { path: "/add_employee", name: "add_employee", component: add_employee},
+  {
+    path: '/',
+    name: 'home',
+    component: HomeView
+  },
+  {
+    path: '/about',
+    name: 'about',
+    component: () => import('../views/AboutView.vue')
+  },
+  {
+    path: '/showproduct',
+    name: 'showproduct',
+    component: () => import('../views/ShowProduct.vue')
+  },
+  {
+    path: '/customer',
+    name: 'customer',
+    component: () => import('../views/Customer.vue')
+  },
+  {
+    path: '/add_customer',
+    name: 'add_customer',
+    component: () => import('../views/Add_customer.vue')
+  },
+  {
+    path: '/student',
+    name: 'student',
+    component: () => import('../views/Student.vue')
+  },
+  {
+    path: '/product',
+    name: 'product',
+    component: () => import('../views/Product.vue')
+  },
+  {
+    path: '/Addproduct',
+    name: 'Addproduct',
+    component: () => import('../views/Add_product.vue')
+  },
+  {
+    path: '/customer_edit',
+    name: 'customer_edit',
+    component: () => import('../views/edit_customer.vue')
+  },
+   {
+    path: '/product_edit',
+    name: 'product_edit',
+    component: () => import('../views/edit_product.vue')
+  },
+  {
+    path: '/employees',
+    name: 'employees',
+    component: () => import('../views/Employee.vue')
+  },
+   {
+    path: '/login_customer',
+    name: 'customerLogin',
+    component: () => import('../views/Login.vue')
+  },
+    {
+    path: '/login_admin',
+    name: 'login_admin',
+    component: () => import('../views/Login_Admin.vue')
+  }
 
- 
+
+
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(process.env.BASE_URL),
   routes
 })
 
+
+// 🧠 Navigation Guard — ตรวจสอบการเข้าสู่ระบบ
+router.beforeEach((to, from, next) => {
+  const isLoggedIn = localStorage.getItem("customerLogin") === "true";
+
+  // ถ้าหน้านั้นต้องล็อกอินก่อน แต่ยังไม่ได้ล็อกอิน
+  if (to.meta.requiresAuth && !isLoggedIn) {
+    alert("⚠ กรุณาเข้าสู่ระบบก่อนใช้งานหน้านี้");
+    next("/login_customer");
+  }
+  // ถ้าเข้าสู่ระบบแล้วแต่พยายามกลับไปหน้า login อีก → ส่งกลับหน้าแรก
+  else if (to.path === "/login" && isLoggedIn) {
+    next("/");
+  } 
+  // อื่น ๆ ไปต่อได้ตามปกติ
+  else {
+    next();
+  }
+});
+
 export default router;
+
